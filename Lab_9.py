@@ -9,14 +9,10 @@ def open_file():
         text = open(r"checkers_user_file.txt", "r+")
         return text
     except FileNotFoundError:
-        try:
-            text = open(r"checkers_user_file.txt", "w")
-            text.close()
-            text = open(r"checkers_user_file.txt", "r+")
-            return text
-        except FileNotFoundError:
-            text = open(r"users.txt", "r+")
-            return text
+        text = open(r"checkers_user_file.txt", "w")
+        text.close()
+        text = open(r"checkers_user_file.txt", "r+")
+        return text
 
 
 def dismiss(win):
