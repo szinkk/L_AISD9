@@ -6,13 +6,13 @@ from tkinter import ttk
 
 def open_file():
     try:
-        text = open(r"users.txt", "r+")
+        text = open(r"checkers_user_file.txt", "r+")
         return text
     except FileNotFoundError:
         try:
-            text = open(r"users.txt", "w")
+            text = open(r"checkers_user_file.txt", "w")
             text.close()
-            text = open(r"users.txt", "r+")
+            text = open(r"checkers_user_file.txt", "r+")
             return text
         except FileNotFoundError:
             text = open(r"users.txt", "r+")
@@ -41,8 +41,7 @@ class AuthorizationWindow:
         self.entry_password = ttk.Entry(width=30, justify="center", show="*")
         self.button_auth = ttk.Button(text="Авторизироваться", style="my.TButton", command=lambda: self.authorization())
         self.button_reg = ttk.Button(text="Зарегистрироваться", style="my.TButton", command=lambda: self.registrate())
-        self.button_hide = ttk.Button(text="-", command=lambda: self.hide_password(self.entry_password, self.button_hide
-                                                                                   ))
+        self.button_hide = ttk.Button(text="-", command=lambda: self.hide_password(self.entry_password, self.button_hide))
 
         self.label.place(x=350, y=25)
         self.label_login.place(x=500, y=55)
@@ -80,7 +79,7 @@ class AuthorizationWindow:
             a = file.readline()[:-1].split(" ")
 
             while True:
-                if a != ['']:
+                if a != [""]:
                     self.users[a[0]] = a[1]
                     a = file.readline()[:-1].split(" ")
                 else:
@@ -151,7 +150,7 @@ class AuthorizationWindow:
                 temp = file.readline()[:-1].split(" ")
 
                 while True:
-                    if temp != ['']:
+                    if temp != [""]:
                         self.users[temp[0]] = temp[1]
                         temp = file.readline()[:-1].split(" ")
                     else:
